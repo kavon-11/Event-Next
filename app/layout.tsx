@@ -45,7 +45,7 @@ export default function RootLayout({
           />
         </div>
         <NavBar />
-        <main className="ml-20">
+        <main className="mt-24 md:mt-0 md:ml-20 px-4 md:px-8">
           {children}
         </main>
       </body>

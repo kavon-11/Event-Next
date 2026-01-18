@@ -43,6 +43,10 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 }
+::selection {
+  background-color: var(--color-blue);
+  color: var(--color-background);
+}
 
 @theme inline {
   --color-background: var(--background);

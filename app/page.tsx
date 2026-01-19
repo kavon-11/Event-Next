@@ -1,4 +1,9 @@
+
+"use client"; 
 import ExploreBtn from "@/components/ExploreBtn";
+import EventCard from "@/components/EventCard";
+import {events} from "@/lib/constants";
+
 const Home = () => {
   console.log("Event Page");
   return (
@@ -11,12 +16,10 @@ const Home = () => {
      <h3>Featured Events</h3>
 
      <ul className="events" style={{ listStyle: "none" }}>
-      {[1, 2, 3,4,5].map((event) => (
-       <li key={event} className="event-card">
-        <h4>Event Title {event}</h4>
-        <p>Date: 2024-0{event}-15</p>
-        <p>Location: City {event}</p>
-       </li>
+      {events.map((event) => (
+        <li key={event.title}>
+        <EventCard {...event} />
+        </li>
       ))}
      </ul>
     </div>

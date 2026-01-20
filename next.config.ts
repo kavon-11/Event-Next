@@ -1,6 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  images : {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        // port: '',
+        // pathname: '/dpx9jsxzf/**',
+      },
+    ],
+  },
   /* config options here */
   reactCompiler : true, 
   // imporve react performance after npm install babel-plugin-react-compiler@latest

@@ -43,6 +43,7 @@ export default function RootLayout({
             noiseAmount={0.15}
             className="custom-rays"
           />
+          <div className="absolute bottom-0 left-0 right-0 h-96 bg-gradient-to-t from-black via-black/50 to-transparent pointer-events-none" />
         </div>
         <NavBar />
         <main className="mt-24 md:mt-0 md:ml-20 px-4 md:px-8">

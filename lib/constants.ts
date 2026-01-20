@@ -5,7 +5,7 @@ import image4 from "../public/images/event4.png";
 import image5 from "../public/images/event5.png";
 import image6 from "../public/images/event6.png";
 
-export const events = [
+export const eventsLocal = [
   {
     title: "React Conf 2025",
     image: image1,

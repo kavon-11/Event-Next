@@ -37,7 +37,7 @@ export async function GET(
     const sanitizedSlug = slug.trim().toLowerCase();
 
     // Query events by slug
-    const event = await Event.findOne({ slug: sanitizedSlug }).lean();
+    const event  = await Event.findOne({ slug: sanitizedSlug }).lean();
 
     // Handle events not found
     if (!event) {

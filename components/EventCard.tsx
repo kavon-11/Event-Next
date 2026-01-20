@@ -3,17 +3,17 @@ import pin from "@/public/icons/pin.svg"
 import calender from "@/public/icons/calendar.svg"
 import clock from "@/public/icons/clock.svg"
 import Image, { StaticImageData } from "next/image";
-interface props {
+export interface EventCardProps {
     title: string;
-    image: StaticImageData;
+    image: StaticImageData | string;
     slug: string;
     location: string;
     date: string;
     time: string;
 }
-function EventCard({ title, image, location, date, time }: props) {
+function EventCard({ title, image, location, date, time, slug }: EventCardProps) {
     return (
-        <Link href={`/events`} id="event-card">
+        <Link href={`/events/${slug}`} id="event-card">
             <Image src={image} alt={title} width={410} height={300} className="poster" />
 
             <div className="p-4">

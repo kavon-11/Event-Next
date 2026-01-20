@@ -113,7 +113,7 @@ export async function POST(req: NextRequest) {
 
     // Handle validation errors
     if (e && typeof e === 'object' && 'name' in e && e.name === 'ValidationError') {
-      errorMessage = e.message || 'Validation failed';
+      errorMessage = 'Validation failed';
     } else if (e instanceof Error) {
       errorMessage = e.message;
     } else if (typeof e === 'string') {

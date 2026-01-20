@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  images : {
+  images: {
     remotePatterns: [
       {
         protocol: 'https',
@@ -12,11 +12,12 @@ const nextConfig: NextConfig = {
     ],
   },
   /* config options here */
-  reactCompiler : true, 
+  reactCompiler: true,
   // imporve react performance after npm install babel-plugin-react-compiler@latest
   // auto use of uememo and usecallback in react components
   experimental: {
     turbopackFileSystemCacheForDev: true,//faster dev builds
+    useCache: true,
   },
 };
 

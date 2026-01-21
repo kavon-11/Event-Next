@@ -1,14 +1,24 @@
 'use server';
-
 import Event from '@/database/event.model';
 import connectDB from "@/lib/mongodb";
+
+// Helper function to serialize MongoDB documents
+const serializeEvent = (event: any) => {
+    return {
+        ...event,
+        _id: event._id.toString(),
+        createdAt: event.createdAt?.toISOString(),
+        updatedAt: event.updatedAt?.toISOString(),
+    };
+};
 
 export const getSimilarEventsBySlug = async (slug: string) => {
     try {
         await connectDB();
         const event = await Event.findOne({ slug });
 
-        return await Event.find({ _id: { $ne: event._id }, tags: { $in: event.tags } }).lean();
+        const events = await Event.find({ _id: { $ne: event._id }, tags: { $in: event.tags } }).lean();
+        return events.map(serializeEvent);
     } catch {
         return [];
     }
@@ -17,7 +27,7 @@ export const getSimilarEventsBySlug = async (slug: string) => {
 export const getSimilarEventsByTags = async (tags: string[], excludeId: string = '') => {
     try {
         await connectDB();
-        
+
         const query: any = { tags: { $in: tags } };
         if (excludeId && excludeId.match(/^[0-9a-fA-F]{24}$/)) { // validation for mongoose objectid
             query._id = { $ne: excludeId };
@@ -27,8 +37,9 @@ export const getSimilarEventsByTags = async (tags: string[], excludeId: string =
             // But we still want to filter out the same event if it happened to be in DB? 
             // logic: find events with same tags. 
         }
-        
-        return await Event.find(query).limit(3).lean();
+
+        const events = await Event.find(query).limit(3).lean();
+        return events.map(serializeEvent);
     } catch (e) {
         console.log(e);
         return [];

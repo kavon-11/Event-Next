@@ -29,7 +29,8 @@ export async function POST(req: NextRequest) {
 
     if (!file) return NextResponse.json({ message: 'Image file is required' }, { status: 400 })
 
-    let tags, agenda;
+    let tags =JSON.parse(formData.get('tags') as string || '[]');
+    let agenda = JSON.parse(formData.get('agenda') as string || '[]');
 
     try {
       tags = JSON.parse(formData.get('tags') as string || '[]');

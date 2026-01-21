@@ -10,11 +10,12 @@ export interface EventCardProps {
     location: string;
     date: string;
     time: string;
+    priority?: boolean;
 }
-function EventCard({ title, image, location, date, time, slug }: EventCardProps) {
+function EventCard({ title, image, location, date, time, slug, priority = false }: EventCardProps) {
     return (
         <Link href={`/events/${slug}`} id="event-card">
-            <Image src={image} alt={title} width={410} height={300} className="poster" />
+            <Image src={image} alt={title} width={410} height={300} className="poster" priority={priority} />
 
             <div className="p-4">
                 <div className="mb-3">

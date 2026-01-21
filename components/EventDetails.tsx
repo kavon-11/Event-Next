@@ -106,7 +106,7 @@ const EventDetails = async ({ params }: { params: Promise<string> }) => {
             <div className="details">
                 {/*    Left Side - Event Content */}
                 <div className="content">
-                    <Image src={image} alt="Event Banner" width={800} height={800} className="banner" />
+                    <Image src={image} alt="Event Banner" width={800} height={800} className="banner" priority />
 
                     <section className="flex-col-gap-2">
                         <h2>Overview</h2>

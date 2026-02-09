@@ -12,9 +12,7 @@ export default function Home() {
       <div className="mt-20 space-y-7">
         <h3>Featured Events</h3>
 
-        <Suspense fallback={<div className="text-center text-gray-500">Loading events...</div>}>
-          <EventList />
-        </Suspense>
+        <EventList />
       </div>
     </section>
 

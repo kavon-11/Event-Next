@@ -45,3 +45,15 @@ export const getSimilarEventsByTags = async (tags: string[], excludeId: string =
         return [];
     }
 }
+
+export const getEventBySlug = async (slug: string) => {
+    try {
+        await connectDB();
+        const event = await Event.findOne({ slug: slug.trim().toLowerCase() }).lean();
+        if (!event) return null;
+        return serializeEvent(event);
+    } catch (e) {
+        console.error('Error fetching event by slug:', e);
+        return null;
+    }
+}

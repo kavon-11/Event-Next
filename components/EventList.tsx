@@ -1,24 +1,19 @@
-import { cacheLife } from "next/cache";
-import EventCard, { EventCardProps } from "@/components/EventCard";
+import EventCard from "@/components/EventCard";
 import { eventsLocal } from "@/lib/constants";
+import { Suspense } from "react";
+import DbEvents from "./DbEvents";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-
-const EventList = async () => {
-    'use cache'
-    cacheLife('seconds');
-    const response = await fetch(`${BASE_URL}/api/events`);
-    const { events } = await response.json();
-
-    const allEvents = [...eventsLocal, ...(events || [])];
-
+const EventList = () => {
     return (
         <ul className="events" style={{ listStyle: "none" }}>
-            {allEvents && allEvents.length > 0 && allEvents.map((event: EventCardProps, index: number) => (
+            {eventsLocal.map((event, index) => (
                 <li key={event.title}>
                     <EventCard {...event} priority={index === 0} />
                 </li>
             ))}
+            <Suspense fallback={<li className="text-center text-gray-500">Loading more events...</li>}>
+                <DbEvents />
+            </Suspense>
         </ul>
     );
 };

@@ -12,17 +12,13 @@ function NavBar() {
                 </Link>
 
                 {/* Links */}
-                <ul className="grid grid-cols-3 md:grid-cols-1 gap-1 md:gap-4 list-none text-xs justify-end md:justify-start">
+                <ul className="grid grid-cols-2 md:grid-cols-1 gap-1 md:gap-4 list-none text-xs justify-end md:justify-start">
                     <li>
                         <Link className="block py-2 md:py-3 px-2 md:px-4 rounded-lg transition hover:bg-white/10 hover:text-teal-300 text-center text-[10px] md:text-xs" href="/">
                             Home
                         </Link>
                     </li>
-                    <li>
-                        <Link className="block py-2 md:py-3 px-2 md:px-4 rounded-lg transition hover:bg-white/10 hover:text-teal-300 text-center text-[10px] md:text-xs" href="/events">
-                            Events
-                        </Link>
-                    </li>
+
                     <li>
                         <Link className="block py-2 md:py-3 px-2 md:px-4 rounded-lg transition hover:bg-white/10 hover:text-teal-300 text-center text-[10px] md:text-xs" href="/about">
                             About
